@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ordering_App"
+             xmlns:views="clr-namespace:Ordering_App.Views"
+             x:Class="Ordering_App.AppShell">
+    <ShellContent x:Name="login" Route="LoginPage" ContentTemplate="{DataTemplate views:LoginPage}"/>
+    <FlyoutItem Title="List">
+        <ShellContent Route="listingPage" ContentTemplate="{DataTemplate views:listingPage}"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Add">
+        <ShellContent Route="infoPage" ContentTemplate="{DataTemplate views:infoPage}"/>
+    </FlyoutItem>
+</Shell>

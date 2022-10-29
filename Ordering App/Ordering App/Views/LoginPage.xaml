@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ordering_App.ViewModels"
+             xmlns:model="clr-namespace:Ordering_App.Models"
+             x:Class="Ordering_App.Views.LoginPage">
+    <ContentPage.BindingContext>
+        <local:loginView/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label Text="Login" FontSize="Title" VerticalOptions="Center"></Label>
+                <Entry x:Name="Username" Placeholder="Username" Text="{Binding Username}" ></Entry>
+                <Entry x:Name="Password" IsPassword="True" Placeholder="Password" Text="{Binding Password}"></Entry>
+            </StackLayout>
+            <Button Text="Login" Command="{Binding OnLoginClicked}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ordering_App.ViewModels"
+             xmlns:model="clr-namespace:Ordering_App.Models"
+             x:Class="Ordering_App.Views.listingPage">
+ 
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Add"  Command="{Binding AddOrderCommand}"/>
+            <RefreshView x:DataType="local:listingView"
+                         Command="{Binding LoadOrderCommand}"
+                         IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+                <CollectionView
+                    ItemsSource="{Binding orders}"
+                    SelectionMode="None">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:DataType="model:Order">
+                                <Grid Padding="5">
+                                    <Frame CornerRadius="10" HasShadow="True">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Grid.RowSpan="2" Text="{Binding orderDescription}"></Label>
+                                            <StackLayout>
+                                                <Label Grid.Column="1" Text="{Binding orderId}" FontAttributes="Bold"></Label>
+                                                <Label Grid.Column="1" Text="{Binding orderDate}" VerticalOptions="End"></Label>
+                                            </StackLayout>
+                                            <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
+                                                <Button Grid.Column="3" Text="Edit" Command="{Binding Source={RelativeSource AncestorType={x:Type local:listingView}},
+                                                        Path=OrderTappedEdit}" CommandParameter="{Binding .}"></Button>
+                                                <Button Grid.Column="3" Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type local:listingView}},
+                                                        Path=OrderTappedDelete}" CommandParameter="{Binding .}"></Button>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

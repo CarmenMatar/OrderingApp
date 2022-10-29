@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ordering_App.ViewModels"
+             x:Class="Ordering_App.Views.infoPage">
+    <ContentPage.BindingContext>
+        <local:infoView />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="ID" FontSize="Medium" IsEnabled="False"></Label>
+            <Entry Text="{Binding Order.orderId, Mode=TwoWay}" FontSize="Medium" IsEnabled="False" ></Entry>
+            <Label Text="Desciption" FontSize="Medium"></Label>
+            <Entry Text="{Binding Order.orderDescription, Mode=TwoWay}" FontSize="Medium" ></Entry>
+            <Label Text="Amount" FontSize="Medium"></Label>
+            <Entry Text="{Binding Order.orderAmount, Mode=TwoWay}" FontSize="Medium"></Entry>
+            <Label Text="Date" FontSize="Medium"></Label>
+            <DatePicker Date="{Binding Order.orderDate, Mode=TwoWay}"  ></DatePicker>
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Save" Command="{Binding SaveCommand}"></Button>
+                <Button Text="Cancel" Command="{Binding CancelCommand}"></Button>
+            </StackLayout>
+            
+        </StackLayout>
+
+        
+    </ContentPage.Content>
+</ContentPage>
